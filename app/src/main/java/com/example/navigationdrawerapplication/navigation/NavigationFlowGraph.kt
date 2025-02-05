@@ -13,7 +13,7 @@ fun NavigationFlowGraph(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "home") {
         composable("home") { HomePage(navController) }
-        composable("settings") { GalleryGrid(navController) }
-        composable("staggered") { StaggeredGridPage() }
+        composable("gridView") { GalleryGrid(navController) }
+        composable("staggered") { StaggeredGridPage(navController) }
     }
 }

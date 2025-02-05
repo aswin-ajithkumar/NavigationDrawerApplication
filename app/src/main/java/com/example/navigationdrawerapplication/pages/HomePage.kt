@@ -31,17 +31,17 @@ fun HomePage(navController: NavController) {
 
     val menuItems2 = listOf(
         MenuItem(
-            id = "settings",
-            title = "Settings",
+            id = "gridViewScreen",
+            title = "Grid View",
             icon = Icons.Outlined.Settings,
             notificationCount = 20,
-            contentDesc = "Settings"
+            contentDesc = "gridViewScreen"
         ),
         MenuItem(
-            id = "help",
-            title = "Help and feedback",
+            id = "staggeredGridViewScreen",
+            title = "Staggered Grid",
             icon = Icons.AutoMirrored.Outlined.ExitToApp,
-            contentDesc = "Help & Feedback"
+            contentDesc = "staggeredGridViewScreen"
         )
     )
 
@@ -99,12 +99,12 @@ fun HomePage(navController: NavController) {
                             badge = item.notificationCount?.let { { Text(it.toString()) } },
                             onClick = {
                                 when (item.id) {
-                                    "settings" -> {
+                                    "gridViewScreen" -> {
                                         scope.launch { drawerState.close() }
-                                        navController.navigate("settings")
+                                        navController.navigate("gridView")
                                     }
 
-                                    "help" -> {
+                                    "staggeredGridViewScreen" -> {
                                         scope.launch { drawerState.close() }
                                         navController.navigate("staggered")
                                     }
