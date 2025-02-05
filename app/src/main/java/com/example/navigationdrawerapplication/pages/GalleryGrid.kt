@@ -1,21 +1,10 @@
 package com.example.navigationdrawerapplication.pages
 
 import android.content.res.Configuration
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -35,7 +24,6 @@ fun GalleryGrid(navController: NavController) {
                 .padding(innerPadding)
                 .fillMaxWidth()
                 .background(color = Color.White)
-
         ) {
             when (orientation.orientation) {
                 Configuration.ORIENTATION_PORTRAIT ->
@@ -44,7 +32,6 @@ fun GalleryGrid(navController: NavController) {
                             .fillMaxWidth()
                             .background(color = Color.Cyan)
                     )
-
                 else ->
                     HeaderLandscape(
                         modifier = Modifier
@@ -55,15 +42,10 @@ fun GalleryGrid(navController: NavController) {
             Spacer(modifier = Modifier.height(12.dp))
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(minSize = 130.dp),
-                modifier = Modifier
-                    .padding(),
+                modifier = Modifier.padding(),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
-                items(30) {
-                    HeaderPortrait()
-                }
-            }
+            ) { items(30) { HeaderPortrait() } }
         }
     }
 }
@@ -75,18 +57,13 @@ private fun HeaderPortrait(
     weight: Float? = 1f
 ) {
     Row(modifier = modifier) {
-        Column(
-            modifier = Modifier.weight(weight!!)
-                .padding(16.dp,48.dp,16.dp,0.dp)
-        ) {
+        Column(modifier = Modifier.weight(weight!!).padding(16.dp,48.dp,16.dp,0.dp)) {
             Image(
                 painter = painterResource(R.drawable.android_logo),
                 contentDescription = "",
                 modifier = Modifier.padding(start = 6.dp),
             )
-            Text(
-                text = category!!,
-            )
+            Text(text = category!!)
             Button(onClick = {}) {
                 Icon(
                     painter = painterResource(R.drawable.round_add_24),
@@ -103,24 +80,17 @@ private fun HeaderLandscape(
     category: String? = "Apple",
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier
-            .padding(top = 48.dp, start = 16.dp, end = 16.dp)
-    ) {
+    Row(modifier = modifier.padding(top = 48.dp, start = 16.dp, end = 16.dp)) {
         Image(
             painter = painterResource(R.drawable.android_logo),
             contentDescription = "",
-            modifier = Modifier
-                .align(CenterVertically),
+            modifier = Modifier.align(CenterVertically),
         )
         Column(
-            modifier = Modifier
-                .padding(8.dp),
+            modifier = Modifier.padding(8.dp),
             verticalArrangement = Arrangement.SpaceAround
         ) {
-            Text(
-                text = category!!,
-            )
+            Text(text = category!!,)
             Button(onClick = {}) {
                 Icon(
                     painter = painterResource(R.drawable.round_add_24),

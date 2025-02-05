@@ -23,12 +23,10 @@ fun HomePage(navController: NavController) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
     var showBottomSheet by remember { mutableStateOf(false) }
     val controller = rememberNavController()
-
     val menuItems1 = listOf(
         MenuItem(id = "item1", title = "Item 1"),
         MenuItem(id = "item2", title = "Item 2"),
     )
-
     val menuItems2 = listOf(
         MenuItem(
             id = "gridViewScreen",
@@ -44,7 +42,6 @@ fun HomePage(navController: NavController) {
             contentDesc = "staggeredGridViewScreen"
         )
     )
-
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -74,11 +71,9 @@ fun HomePage(navController: NavController) {
                                     "item1" -> {
                                         scope.launch { drawerState.close() }
                                     }
-
                                     "item2" -> {
                                         scope.launch { drawerState.close() }
                                     }
-
                                     else -> Unit
                                 }
                             }
@@ -103,7 +98,6 @@ fun HomePage(navController: NavController) {
                                         scope.launch { drawerState.close() }
                                         navController.navigate("gridView")
                                     }
-
                                     "staggeredGridViewScreen" -> {
                                         scope.launch { drawerState.close() }
                                         navController.navigate("staggered")
@@ -130,9 +124,7 @@ fun HomePage(navController: NavController) {
                                     drawerState.close()
                                 }
                             }
-                        }) {
-                            Icon(Icons.Default.Menu, contentDescription = "Menu")
-                        }
+                        }) { Icon(Icons.Default.Menu, contentDescription = "Menu") }
                     }
                 )
             },
@@ -140,37 +132,19 @@ fun HomePage(navController: NavController) {
                 ExtendedFloatingActionButton(
                     text = { Text("Show bottom sheet") },
                     icon = { Icon(Icons.Filled.Add, contentDescription = "") },
-                    onClick = {
-                        showBottomSheet = true
-                    }
+                    onClick = { showBottomSheet = true }
                 )
             }
         ) { contentPadding ->
-            Box(
-                modifier = Modifier.padding(contentPadding)
-            )
+            Box(modifier = Modifier.padding(contentPadding))
             if (showBottomSheet) {
                 ModalBottomSheet(
-                    onDismissRequest = {
-                        showBottomSheet = false
-                    },
+                    onDismissRequest = { showBottomSheet = false },
                     sheetState = sheetState,
                     modifier = Modifier.fillMaxHeight()
-                ) {
-                    BottomSheetContent {
-                        scope.launch { sheetState.hide() }.invokeOnCompletion {
-                            if (!sheetState.isVisible) {
-                                showBottomSheet = false
-                            }
-                        }
-                    }
-                }
+                ) { BottomSheetContent { scope.launch { sheetState.hide() }.invokeOnCompletion { if (!sheetState.isVisible) { showBottomSheet = false } } } }
             }
-            Box(
-                modifier = Modifier.padding(contentPadding)
-            ) {
-
-            }
+            Box(modifier = Modifier.padding(contentPadding))
         }
     }
 }

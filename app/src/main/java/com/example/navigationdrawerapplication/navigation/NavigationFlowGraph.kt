@@ -1,12 +1,8 @@
 package com.example.navigationdrawerapplication.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.navigationdrawerapplication.pages.GalleryGrid
-import com.example.navigationdrawerapplication.pages.HomePage
-import com.example.navigationdrawerapplication.pages.StaggeredGridPage
+import androidx.navigation.compose.*
+import com.example.navigationdrawerapplication.pages.*
 
 @Composable
 fun NavigationFlowGraph(){
